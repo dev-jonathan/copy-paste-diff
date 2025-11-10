@@ -1,0 +1,93 @@
+{
+  "name": "copy-paste-diff",
+  "displayName": "copy-paste-diff",
+  "description": "Shows a diff automatically for paste in files",
+  "version": "0.1.0",
+  "publisher": "dev-jonathan",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dev-jonathan/copy-paste-diff"
+  },
+  "engines": {
+    "vscode": "^1.105.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "diffPaste.autoDiffPaste",
+        "title": "Diff Paste: Auto"
+      },
+      {
+        "command": "diffPaste.forceDiffPaste",
+        "title": "Diff Paste: Force"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "diffPaste.autoDiffPaste",
+        "key": "ctrl+v",
+        "mac": "cmd+v",
+        "when": "editorTextFocus && config.diffPaste.enablePasteOverride"
+      },
+      {
+        "command": "editor.action.clipboardPasteAction",
+        "key": "ctrl+v",
+        "mac": "cmd+v",
+        "when": "editorTextFocus && !config.diffPaste.enablePasteOverride"
+      },
+      {
+        "command": "diffPaste.forceDiffPaste",
+        "key": "ctrl+alt+v",
+        "mac": "cmd+alt+v",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "Diff Paste",
+      "properties": {
+        "diffPaste.enablePasteOverride": {
+          "type": "boolean",
+          "default": false,
+          "description": "Enable Diff Paste for the normal Paste (Ctrl+V/Cmd+V). The diff will only show if the pasted/replaced text length is at least 'Min Paste Size'."
+        },
+        "diffPaste.minPasteSize": {
+          "type": "number",
+          "default": 100,
+          "description": "Minimum size (in characters) of pasted or replaced text to trigger the diff in automatic mode."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "webpack",
+    "watch": "webpack --watch",
+    "package": "webpack --mode production --devtool hidden-source-map",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.105.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
+    "eslint": "^9.36.0",
+    "typescript": "^5.9.3",
+    "ts-loader": "^9.5.4",
+    "webpack": "^5.102.0",
+    "webpack-cli": "^6.0.1",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
