@@ -2,7 +2,7 @@
   "name": "copy-paste-diff",
   "displayName": "copy-paste-diff",
   "description": "Shows a diff automatically for paste in files",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "dev-jonathan",
   "repository": {
     "type": "git",

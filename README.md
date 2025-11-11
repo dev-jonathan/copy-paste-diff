@@ -1,4 +1,4 @@
-![banner](./assets/banner.png)
+![banner](https://i.imgur.com/Ga9FGmJ.png)
 
 # copy-paste-diff
 
@@ -6,7 +6,7 @@
 
 ## Demo
 
-![Demo](./assets/clip-extension.gif)
+![Demo](https://i.imgur.com/1AeiH5B.gif)
 
 ## Quick Start
 
@@ -23,7 +23,6 @@ Press **Ctrl+Alt+V** (or **Cmd+Alt+V** on macOS) to paste with diff view. The ex
 
 - **`diffPaste.enablePasteOverride`** (default: `false`)
   - Enable to automatically show diff when using normal Paste (`Ctrl+V`/`Cmd+V`) for large text blocks
-  
 - **`diffPaste.minPasteSize`** (default: `100`)
   - Minimum characters to trigger diff in automatic mode
 
